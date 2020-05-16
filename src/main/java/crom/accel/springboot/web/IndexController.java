@@ -1,5 +1,6 @@
 package crom.accel.springboot.web;
 
+import crom.accel.springboot.config.auth.LoginUser;
 import crom.accel.springboot.config.auth.dto.SessionUser;
 import crom.accel.springboot.service.PostsService;
 import crom.accel.springboot.web.dto.PostsResponseDto;
@@ -19,9 +20,11 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser)httpSession.getAttribute("user");
+
+        // SessionUser user = (SessionUser)httpSession.getAttribute("user"); 해당 부분은 @LoginUser SessionUser user 로 대체되었음
+
         if(user != null) {
             model.addAttribute("userName", user.getName());
             model.addAttribute("userEmail", user.getEmail());
