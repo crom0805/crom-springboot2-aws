@@ -11,6 +11,11 @@ Java 8
 
 Springboot 2.1.7
 
+AWS EC2
+
+MariaDB 10.2.21
+
+
 ### crom0805@gmail.com
 
 
